@@ -30,9 +30,9 @@ const GrievanceForm = ({ onClose, refreshGrievances, editingGrievance }) => {
     e.preventDefault();
     try {
       if (editingGrievance) {
-        await axios.put(`http://localhost:5300/api/grievances/${editingGrievance._id}`, formData);
+        await axios.put(`${import.meta.env.VITE_API_URL}/api/grievances/${editingGrievance._id}`, formData);
       } else {
-        await axios.post('http://localhost:5300/api/grievances', formData);
+        await axios.post(`${import.meta.env.VITE_API_URL}/api/grievances`, formData);
       }
       refreshGrievances();
       onClose();

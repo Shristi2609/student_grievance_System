@@ -10,7 +10,13 @@ const app = express();
 
 // Middleware
 app.use(express.json({ extended: false }));
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://student-grievance-system-351k.onrender.com',
+    'http://localhost:5173'
+  ],
+  credentials: true
+}));
 
 // Define Routes
 app.use('/api', require('./routes/auth'));

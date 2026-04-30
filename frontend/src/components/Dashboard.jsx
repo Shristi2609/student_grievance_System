@@ -17,7 +17,7 @@ const Dashboard = () => {
 
   const fetchGrievances = async () => {
     try {
-      const res = await axios.get('http://localhost:5300/api/grievances');
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/grievances`);
       setGrievances(res.data);
     } catch (err) {
       console.error(err);
@@ -31,7 +31,7 @@ const Dashboard = () => {
       return;
     }
     try {
-      const res = await axios.get(`http://localhost:5300/api/grievances/search?title=${searchQuery}`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/grievances/search?title=${searchQuery}`);
       setGrievances(res.data);
     } catch (err) {
       console.error(err);
@@ -40,7 +40,7 @@ const Dashboard = () => {
 
   const deleteGrievance = async (id) => {
     try {
-      await axios.delete(`http://localhost:5300/api/grievances/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/grievances/${id}`);
       setGrievances(grievances.filter(g => g._id !== id));
     } catch (err) {
       console.error(err);
